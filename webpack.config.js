@@ -6,4 +6,8 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
   },
+  devServer: {
+    contentBase: path.join(__dirname, "public"),
+    https: true,
+  },
 };

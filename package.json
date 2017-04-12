@@ -4,6 +4,7 @@
   "description": "Basic Webpack usage",
   "main": "src/main.js",
   "scripts": {
+    "start": "webpack-dev-server --open",
     "dev": "webpack -d --watch",
     "build": "webpack -p"
   },
@@ -15,6 +16,7 @@
   "author": "Samuel Scheiderich",
   "license": "0BSD",
   "devDependencies": {
-    "webpack": "^2.3.3"
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
   }
 }
