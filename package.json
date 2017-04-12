@@ -1,0 +1,20 @@
+{
+  "name": "basic-webpack",
+  "version": "1.0.0",
+  "description": "Basic Webpack usage",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "build": "webpack -p"
+  },
+  "keywords": [
+    "webpack",
+    "javascript",
+    "modules"
+  ],
+  "author": "Samuel Scheiderich",
+  "license": "0BSD",
+  "devDependencies": {
+    "webpack": "^2.3.3"
+  }
+}
