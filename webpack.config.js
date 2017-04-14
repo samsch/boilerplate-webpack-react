@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/main.js',
+  entry: ['babel-polyfill', './src/main.js'],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
@@ -9,5 +9,14 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "public"),
     https: true,
+  },
+  module: {
+    rules: [
+      {
+        test : /\.jsx?/,
+        include: path.resolve(__dirname, 'src/'),
+        use: ['babel-loader'],
+      },
+    ],
   },
 };

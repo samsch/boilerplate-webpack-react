@@ -1,12 +1,10 @@
-# Basic Webpack (just bundling, no loaders)
+# Basic Webpack for React and Modern Javascript
 
->This is a sister repository to my [Getting Started with Webpack](https://samuelscheiderich.com/2017/04/11/getting-started-with-webpack/) article.
+>This is the final result of my [Getting Started with Webpack - Part 2]() guide, which builds off of [Part 1](https://samuelscheiderich.com/2017/04/11/getting-started-with-webpack/).
 
-This is an example or boilerplate for using Webpack. The core functionality is here, which is to take ES module or CommonJS module source files and "bundle" them into a single distributable js file to be used in website/webapp.
+This is an example or boilerplate for using Webpack. The core functionality is here, which is to take ES module or CommonJS module source files and "bundle" them into a single distributable js file to be used in website/webapp. This repo also has babel-loader setup to compile modern Javascript to older standards for browser support, and to compile JSX for React into pure Javascript. Also included is the Babel polyfill, which allows us to use newer Javascript functions (such as additional Array.prototype methods).
 
-Webpack at it's core is pretty simple and can be run completely from the command line. However, it's usually convienent to keep a `webpack.config.js` file which holds the actual Webpack project configuration.
-
-Also included is a basic webpack-dev-server configuration, which acts as a static file server, and serves the compiled bundle. In addition, it adds code to the bundle so that it can automatically refresh the page when changes are made to the source. An added bonus is that the dev server keeps the bundle and source in memory, and can rebuild faster than the normal Webpack tool.
+For development, this repo has webpack-dev-server setup, which acts as a static file server, and serves the compiled bundle. In addition, it adds code to the bundle so that it can automatically refresh the page when changes are made to the source. An added bonus is that the dev server keeps the bundle and source in memory, and can rebuild faster than the normal Webpack tool.
 
 ## Running this project
 
