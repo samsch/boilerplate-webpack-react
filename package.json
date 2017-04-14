@@ -4,7 +4,7 @@
   "description": "Basic Webpack usage",
   "main": "src/main.js",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server -d --open",
     "dev": "webpack -d --watch",
     "build": "webpack -p"
   },
