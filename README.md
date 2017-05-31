@@ -1,6 +1,6 @@
 # Basic Webpack for React and Modern Javascript
 
->This is the final result of my [Getting Started with Webpack - Part 2](https://samuelscheiderich.com/2017/04/14/getting-started-with-webpack-part-2/) guide, which builds off of [Part 1](https://samuelscheiderich.com/2017/04/11/getting-started-with-webpack/).
+>This is the final result of my [Getting Started with Webpack - Part 2](https://samuelscheiderich.com/2017/04/14/getting-started-with-webpack-part-2/) guide, which builds off of [Part 1](https://samuelscheiderich.com/2017/04/08/getting-started-with-webpack/).
 
 This is an example or boilerplate for using Webpack. The core functionality is here, which is to take ES module or CommonJS module source files and "bundle" them into a single distributable js file to be used in website/webapp. This repo also has babel-loader setup to compile modern Javascript to older standards for browser support, and to compile JSX for React into pure Javascript. Also included is the Babel polyfill, which allows us to use newer Javascript functions (such as additional Array.prototype methods).
 
