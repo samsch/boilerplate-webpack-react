@@ -1,0 +1,5 @@
+@import "paragraph.css";
+
+h1 {
+  border-bottom: solid 2px gray;
+}
