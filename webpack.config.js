@@ -1,5 +1,6 @@
+/* eslint-env node */
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: ['babel-polyfill', './src/main.js'],
@@ -8,20 +9,20 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
   },
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(__dirname, 'public'),
     https: true,
   },
   module: {
     rules: [
       {
-        test : /\.jsx?/,
+        test: /\.jsx?/,
         include: path.resolve(__dirname, 'src/'),
         use: ['babel-loader'],
       },
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: ExtractTextPlugin.extract({
-          use: 'css-loader',
+          use: ['css-loader', 'sass-loader'],
         }),
       },
     ],
