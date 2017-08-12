@@ -5,7 +5,9 @@ import './style.scss';
 const App = props =>
   <div>
     <h1>Counter Example</h1>
-    <div>Current count: {props.state.count}</div>
+    <div>
+      Current count: {props.state.count}
+    </div>
     <div>
       <button type="button" onClick={props.action.increment}>
         Increment
