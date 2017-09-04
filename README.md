@@ -6,6 +6,7 @@
 - Babel loader (JSX for React, ES latest using env preset, dynamic import support)
 - Sass (as the `.scss` file type) and css import loaders, extracted to a new file.
 - eslint (recommended default from v4 with minor changes, and babel parser for non-standard support.)
+- jest (configured to handle style and file imports, import and dynamic import syntax.)
 
 ## Running this project
 
