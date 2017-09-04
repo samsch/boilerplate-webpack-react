@@ -15,5 +15,10 @@
     ],
     "react"
   ],
-  "plugins": ["syntax-dynamic-import"]
+  "plugins": ["syntax-dynamic-import"],
+  "env": {
+    "test": {
+      "plugins": ["dynamic-import-node"]
+    }
+  }
 }
