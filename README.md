@@ -5,12 +5,23 @@
 - Webpack v3
 - Babel loader (JSX for React, ES latest using env preset, dynamic import support)
 - Sass (as the `.scss` file type) and css import loaders, extracted to a new file.
-- eslint (recommended default from v4 with minor changes, and babel parser for non-standard support.)
+- eslint (using default prettier config + required semi-colons, singleQuotes for strings, and 'es5' comma list mode; using babel parser for non-standard support.)
 - jest (configured to handle style and file imports, import and dynamic import syntax.)
+
+## What about...
+
+- [CSS Modules](https://webpack.js.org/loaders/css-loader/#modules)
+  - Easily enabled by replacing `'css-loader'` in webpack.config.js with `{ loader: 'css-loader', options: { modules: true } }`. Be sure to replace both instances of `'css-loader'` for both development and production mode to work.
+- Flow/Typescript 
+  - Follow the respective instructions for adding these to a Webpack config/project. Assuming babel is doing the syntax conversion for these, eslint should work properly. Jest may need some extra work. (untested)
+- Less
+  - Replace sass-loader with less-loader and any packages less-loader needs.
+- Anything else
+  - Projects which are frequently used with Webpack often have instructions for how to integrate them. Extra babel plugins can just be directly added to .babelrc, and extra Webpack loaders can be added to webpack.config.js.
 
 ## Running this project
 
-You need a current version of Node.js installed (this was originally tested and built with 7.7.1).
+You need a current version of Node.js installed (currently testing and building with 9.3.0, but latest LTS should be fine (and probably Node v6 as well)).
 
 Clone the project, and run `npm install` to install the dependencies. (This project does not include the package-lock.json, to encourage using the latest versions. Please file an issue if a dependency is out of date.)
 
