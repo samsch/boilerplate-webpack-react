@@ -2,12 +2,13 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 // For production build, set this env var to the server public path.
 const publicPath = process.env.APP_PUBLIC_PATH || '/';
 
 module.exports = {
-  entry: ['babel-polyfill', './src/main.js'],
+  entry: ['./src/main.js'],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
@@ -76,5 +77,5 @@ module.exports = {
       inject: true,
       template: 'public/index.html',
     }),
-  ],
+  ].concat(process.env.NODE_ENV === 'production' ? [new UglifyJsPlugin()] : []),
 };

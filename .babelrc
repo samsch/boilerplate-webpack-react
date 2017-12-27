@@ -10,7 +10,8 @@
             "last 2 iOS versions",
             "ie 11"
           ]
-        }
+        },
+        "useBuiltIns": "entry"
       }
     ],
     "react"
