@@ -69,9 +69,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
     new ExtractTextPlugin({
       filename: 'style.css',
       allChunks: true,
@@ -81,5 +78,14 @@ module.exports = {
       inject: true,
       template: 'public/index.html',
     }),
-  ].concat(process.env.NODE_ENV === 'production' ? [new UglifyJsPlugin()] : []),
+  ].concat(
+    process.env.NODE_ENV === 'production'
+      ? [
+          new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production'),
+          }),
+          new UglifyJsPlugin(),
+        ]
+      : []
+  ),
 };
