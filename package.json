@@ -1,6 +1,6 @@
 {
   "name": "basic-webpack",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Basic Webpack usage",
   "main": "src/main.js",
   "scripts": {
