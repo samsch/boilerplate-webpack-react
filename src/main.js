@@ -19,7 +19,7 @@ const store = {
 // Can be passed a function or new state to merge in.
 const updateState = update => {
   const newState = typeof update === 'function' ? update(store.state) : update;
-  store.state = Object.assign({}, store.state, newState);
+  store.state = { ...store.state, ...newState };
   if (store.onUpdate) {
     // Don't rerender in the same cycle, just in case...
     setTimeout(() => {
