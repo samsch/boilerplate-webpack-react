@@ -7,17 +7,22 @@
 - Sass (as the `.scss` file type) and css import loaders, extracted to a new file.
 - eslint (using default prettier config + required semi-colons, singleQuotes for strings, and 'es5' comma list mode; using babel parser for non-standard support.)
 - jest (configured to handle style and file imports, import and dynamic import syntax.)
+- Static assets in `/public` are copied to the build folder (with special handling for index.html to inject the bundle entry files).
 
 ## What about...
 
 - [CSS Modules](https://webpack.js.org/loaders/css-loader/#modules)
-  - Easily enabled by replacing `'css-loader'` in webpack.config.js with `{ loader: 'css-loader', options: { modules: true } }`. Be sure to replace both instances of `'css-loader'` for both development and production mode to work.
-- Flow/Typescript 
-  - Follow the respective instructions for adding these to a Webpack config/project. Assuming babel is doing the syntax conversion for these, eslint should work properly. Jest may need some extra work. (untested)
+  - Enabled by uncommenting `/* , modules: true */` in `webpack.config.js`.
+- Flow/Typescript
+  - Follow the respective instructions for adding these to a Webpack config/project. Assuming babel is doing the syntax conversion for these, eslint should work properly. Jest may need some extra work. (untested) (See loader note below)
 - Less
-  - Replace sass-loader with less-loader and any packages less-loader needs.
+  - Replace sass-loader with less-loader and any packages less-loader needs. (See loader note below)
 - Anything else
-  - Projects which are frequently used with Webpack often have instructions for how to integrate them. Extra babel plugins can just be directly added to .babelrc, and extra Webpack loaders can be added to webpack.config.js.
+  - Projects which are frequently used with Webpack often have instructions for how to integrate them. Extra babel plugins can just be directly added to .babelrc, and extra Webpack loaders can be added to webpack.config.js. (See loader note below)
+
+### Loader note
+
+If you add or change a Webpack loader, make sure that any newly handled file extensions are added to the file-loader exclude list. Inversly, if you remove a loader, you may want to also remove the extension from the exclude list.
 
 ## Running this project
 

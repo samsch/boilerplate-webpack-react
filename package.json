@@ -17,6 +17,7 @@
   "author": "Samuel Scheiderich",
   "license": "0BSD",
   "devDependencies": {
+    "autoprefixer": "^8.0.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
@@ -25,6 +26,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.4.1",
     "css-loader": "^0.28.9",
     "eslint": "^4.17.0",
     "eslint-plugin-react": "^7.6.1",
@@ -33,6 +35,7 @@
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.3.0",
     "node-sass": "^4.7.2",
+    "postcss-loader": "^2.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-test-renderer": "^16.2.0",

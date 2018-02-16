@@ -4,6 +4,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // For production build, set this env var to the server public path.
 const publicPath = process.env.APP_PUBLIC_PATH || '/';
@@ -16,8 +17,18 @@ module.exports = {
     publicPath,
   },
   devServer: {
+    // host: '0.0.0.0', // Uncomment to allow connections from local network.
     contentBase: path.join(__dirname, 'build'),
     https: true,
+    historyApiFallback: true, // Default to expecting React Router.
+    // Setup a proxy:
+    // proxy: {
+    //   // All requests which start with `/api`.
+    //   '/api': {
+    //     target: 'http://localhost:3000',
+    //     changeOrigin: true,
+    //   },
+    // },
   },
   module: {
     rules: [
@@ -26,19 +37,24 @@ module.exports = {
         include: path.resolve(__dirname, 'src/'),
         use: ['babel-loader'],
       },
-      process.env.NODE_ENV === 'production'
-        ? {
-            // For production, we output a separately cachable stylesheet.
-            test: /\.s?css$/,
-            use: ExtractTextPlugin.extract({
-              use: ['css-loader', 'sass-loader'],
-            }),
+      {
+        // For production, we output a separately cachable stylesheet.
+        test: /\.s?css$/,
+        use: (() => {
+          const styleRules = [
+            // Uncomment the `modules: true` property to enable css-modules. Also do that for production below ↓
+            { loader: 'css-loader', options: { importLoaders: 2 /* , modules: true */ } },
+            'postcss-loader', // Used for autoprefixer
+            'sass-loader',
+          ];
+          if (process.env.NODE_ENV === 'production') {
+            // Use ExtractTextPlugin for production so styles are put in a separate, cacheable file.
+            return ExtractTextPlugin.extract({ use: styleRules});
           }
-        : {
-            // For development, style-loader can hot reload styles.
-            test: /\.s?css$/,
-            use: ['style-loader', 'css-loader', 'sass-loader'],
-          },
+          // Use style-loader in development to enable hot style replacement.
+          return ['style-loader', ...styleRules];
+        })(),
+      },
       {
         exclude: [
           /\.html$/,
@@ -77,6 +93,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: 'public/index.html',
+    }),
+    new CopyWebpackPlugin([{
+      from: 'public'
+    }], {
+      ignore: ['index.html'],
     }),
   ].concat(
     process.env.NODE_ENV === 'production'
