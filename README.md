@@ -5,7 +5,7 @@
 - Webpack v3
 - Babel loader (JSX for React, ES latest using env preset, dynamic import support)
 - Sass (as the `.scss` file type) and css import loaders, extracted to a new file.
-- eslint (using default prettier config + required semi-colons, singleQuotes for strings, and 'es5' comma list mode; using babel parser for non-standard support.)
+- eslint (Primarly non-style rules, but required semi-colons, singleQuotes for strings, and 'es5' comma list mode (and a couple others); using babel parser for non-standard support.)
 - jest (configured to handle style and file imports, import and dynamic import syntax.)
 - Static assets in `/public` are copied to the build folder (with special handling for index.html to inject the bundle entry files).
 

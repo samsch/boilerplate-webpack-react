@@ -12,11 +12,10 @@ module.exports = {
     },
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['react'],
   rules: {
-    semi: ['error', 'always'],
     'array-callback-return': 'warn',
-    eqeqeq: ["error", "always", {"null": "ignore"}],
+    'eqeqeq': ["error", "always", {"null": "ignore"}],
     'no-empty-function': 'warn',
     'no-eval': 'warn',
     'no-implied-eval': 'warn',
@@ -31,18 +30,20 @@ module.exports = {
     'no-warning-comments': 'warn',
     'no-with': 'error',
     'prefer-promise-reject-errors': 'error',
-    'wrap-iife': ['error', 'inside'],
     'no-shadow-restricted-names': 'error',
     'no-use-before-define': 'error',
-    'quotes': ["warn", "single"],
-    'space-before-function-paren': 'error',
-    'no-trailing-spaces': 'error',
-    'arrow-spacing': 'error',
     'no-duplicate-imports': 'error',
     'no-useless-rename': 'error',
     'no-var': 'error',
     'prefer-const': 'error',
-
-    "react/prop-types": ['error', { skipUndeclared: true }]
+    "react/prop-types": ['error', { skipUndeclared: true }],
+    
+    // style rules
+    'semi': ['error', 'always'],
+    'wrap-iife': ['warn', 'inside'],
+    'space-before-function-paren': 'warn',
+    'no-trailing-spaces': 'error',
+    'quotes': ["warn", "single"],
+    'arrow-spacing': 'warn',
   },
 };
