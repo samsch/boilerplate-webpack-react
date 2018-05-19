@@ -38,4 +38,4 @@ You can make a production build of the bundle with `npm run build`.
 
 ## Make it your own
 
-`src/main.js` and `src/App.js` contain a basic example app. Replace these with your own app.
+`src/index.js` and `src/App.js` contain a basic example app. Replace these with your own app.

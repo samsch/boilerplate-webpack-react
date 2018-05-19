@@ -1,24 +1,24 @@
 /* eslint-env node */
-const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // For production build, set this env var to the server public path.
 const publicPath = process.env.APP_PUBLIC_PATH || '/';
 
 module.exports = {
-  entry: ['./src/main.js'],
+  // entry: './src/index.js', // The default entry works fine, but this can be customized.
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    // filename: 'bundle.js', // Default '[name].js'
+    // path: path.resolve(__dirname, 'build'), // Default 'dist'
+    // If you change path, you probably want to change the contentBase path in
+    // devServer to match.
     publicPath,
   },
   devServer: {
     // host: '0.0.0.0', // Uncomment to allow connections from local network.
-    contentBase: path.join(__dirname, 'build'),
+    contentBase: path.join(__dirname, 'dist'),
     https: true,
     historyApiFallback: true, // Default to expecting React Router.
     // Setup a proxy:
@@ -33,32 +33,28 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.m?jsx?/,
         include: path.resolve(__dirname, 'src/'),
         use: ['babel-loader'],
       },
       {
         // For production, we output a separately cachable stylesheet.
         test: /\.s?css$/,
-        use: (() => {
-          const styleRules = [
-            // Uncomment the `modules: true` property to enable css-modules. Also do that for production below ↓
-            { loader: 'css-loader', options: { importLoaders: 2 /* , modules: true */ } },
-            'postcss-loader', // Used for autoprefixer
-            'sass-loader',
-          ];
-          if (process.env.NODE_ENV === 'production') {
-            // Use ExtractTextPlugin for production so styles are put in a separate, cacheable file.
-            return ExtractTextPlugin.extract({ use: styleRules});
-          }
-          // Use style-loader in development to enable hot style replacement.
-          return ['style-loader', ...styleRules];
-        })(),
+        use: [
+          // Uses style-loader in development to enable hot style replacement (HMR).
+          process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          // Uncomment the `modules: true` property to enable css-modules.
+          { loader: 'css-loader', options: { importLoaders: 2 /* , modules: true */ } },
+          'postcss-loader',
+          'sass-loader', // Just replace this with less-loader (and install the package) for less.
+        ],
       },
       {
+        // Any file types which you want to add loaders for should be added to this
+        // exclusion list. Otherwise the files will be turned into static links.
         exclude: [
           /\.html$/,
-          /\.(js|jsx)$/,
+          /\.(m?js|jsx)$/,
           /\.scss$/,
           /\.css$/,
           /\.json$/,
@@ -85,9 +81,9 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: 'style.css',
-      allChunks: true,
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
@@ -99,14 +95,5 @@ module.exports = {
     }], {
       ignore: ['index.html'],
     }),
-  ].concat(
-    process.env.NODE_ENV === 'production'
-      ? [
-          new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production'),
-          }),
-          new UglifyJsPlugin(),
-        ]
-      : []
-  ),
+  ]
 };
