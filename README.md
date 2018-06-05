@@ -2,7 +2,7 @@
 
 ## Features
 
-- Webpack v3
+- Webpack v4
 - Babel loader (JSX for React, ES latest using env preset, dynamic import support)
 - Sass (as the `.scss` file type) and css import loaders, extracted to a new file.
 - eslint (Primarly non-style rules, but required semi-colons, singleQuotes for strings, and 'es5' comma list mode (and a couple others); using babel parser for non-standard support.)
