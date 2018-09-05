@@ -2,7 +2,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // For production build, set this env var to the server public path.
 const publicPath = process.env.APP_PUBLIC_PATH || '/';
@@ -39,14 +38,13 @@ module.exports = {
       },
       {
         // For production, we output a separately cachable stylesheet.
-        test: /\.s?css$/,
+        test: /\.css$/,
         use: [
           // Uses style-loader in development to enable hot style replacement (HMR).
           process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
           // Uncomment the `modules: true` property to enable css-modules.
-          { loader: 'css-loader', options: { importLoaders: 2 /* , modules: true */ } },
+          { loader: 'css-loader', options: { importLoaders: 1, modules: true } },
           'postcss-loader',
-          'sass-loader', // Just replace this with less-loader (and install the package) for less.
         ],
       },
       {
@@ -88,12 +86,7 @@ module.exports = {
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,
-      template: 'public/index.html',
-    }),
-    new CopyWebpackPlugin([{
-      from: 'public'
-    }], {
-      ignore: ['index.html'],
+      template: 'src/index.html',
     }),
   ]
 };

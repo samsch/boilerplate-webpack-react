@@ -5,32 +5,24 @@ exports[`The App component Should match a snapshot render 1`] = `
   <h1>
     Counter Example
   </h1>
-  <div>
-    Current count: 
-    17
-  </div>
-  <div>
+  <p>
+    Count: 
+    0
+  </p>
+  <p>
     <button
-      onClick={[MockFunction]}
+      onClick={[Function]}
       type="button"
     >
-      Increment
+      Inc
     </button>
      
     <button
-      onClick={[MockFunction]}
+      onClick={[Function]}
       type="button"
     >
-      Decrement
+      Dec
     </button>
-  </div>
-  <div>
-    <button
-      onClick={[MockFunction]}
-      type="button"
-    >
-      Reset
-    </button>
-  </div>
+  </p>
 </div>
 `;

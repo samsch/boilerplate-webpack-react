@@ -1,35 +1,35 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import './style.scss';
+import styles from './style.css';
 
-const App = props => (
-  <div>
-    <h1>Counter Example</h1>
-    <div>Current count: {props.state.count}</div>
-    <div>
-      <button type="button" onClick={props.action.increment}>
-        Increment
-      </button>{' '}
-      <button type="button" onClick={props.action.decrement}>
-        Decrement
-      </button>
-    </div>
-    <div>
-      <button type="button" onClick={props.action.reset}>
-        Reset
-      </button>
-    </div>
-  </div>
-);
-App.propTypes = {
-  state: PropTypes.shape({
-    count: PropTypes.number.isRequired,
-  }),
-  action: PropTypes.shape({
-    increment: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired,
-    reset: PropTypes.func.isRequired,
-  }),
-};
+class App extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+    this.inc = this.inc.bind(this);
+    this.dec = this.dec.bind(this);
+  }
+  inc () {
+    this.setState(state => ({ count: state.count + 1 }));
+  }
+  dec () {
+    this.setState(state => ({ count: state.count - 1 }));
+  }
+  render () {
+    const { count } = this.state;
+    return (
+      <div>
+        <h1 className={styles.heading}>Counter Example</h1>
+        <p className={styles.output} >Count: {count}</p>
+        <p>
+          <button type="button" onClick={this.inc} >Inc</button>
+          {' '}
+          <button type="button" onClick={this.dec} >Dec</button>
+        </p>
+      </div>
+    );
+  }
+}
 
 export default App;

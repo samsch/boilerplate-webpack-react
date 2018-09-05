@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&subset=latin-ext');
+
+html, body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: inherit;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+:global #root {
+  max-width: 800px;
+  margin: auto;
+}
+
+.heading {
+  border-bottom: solid 2px #777;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.output {
+  display: flex;
+  line-height: 2rem;
+}
+
+.output::after, .output::before {
+  content: "";
+  display: block;
+  flex: 1 1 25%;
+  background-color: #777;
+}
+
+.output::after {
+  margin-left: 2rem;
+}
+
+.output::before {
+  margin-right: 2rem;
+}
