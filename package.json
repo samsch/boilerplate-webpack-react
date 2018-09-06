@@ -26,7 +26,6 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.1.5",
@@ -60,6 +59,8 @@
     }
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "core-js": "^2.5.7",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   }
