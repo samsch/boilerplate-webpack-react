@@ -42,8 +42,8 @@ module.exports = {
         use: [
           // Uses style-loader in development to enable hot style replacement (HMR).
           process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-          // Uncomment the `modules: true` property to enable css-modules.
-          { loader: 'css-loader', options: { importLoaders: 1, modules: true } },
+          // Remove or comment out the `modules` property (or set it to `false`) to disable css-modules.
+          { loader: 'css-loader', options: { importLoaders: 1, modules: 'local' } },
           'postcss-loader',
         ],
       },
