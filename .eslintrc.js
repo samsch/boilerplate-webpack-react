@@ -1,3 +1,6 @@
+// By default eslint ignore it's own config files, so:
+// If making changes, lint with
+// npx eslint .eslintrc.js --ignore-pattern '!.eslintrc.js'
 module.exports = {
   env: {
     browser: true,
@@ -6,8 +9,8 @@ module.exports = {
   parser: 'babel-eslint',
   extends: ['eslint:recommended', 'plugin:react/recommended'],
   parserOptions: {
+    ecmaVersion: '2019',
     ecmaFeatures: {
-      experimentalObjectRestSpread: true,
       jsx: true,
     },
     sourceType: 'module',
@@ -45,5 +48,12 @@ module.exports = {
     'no-trailing-spaces': 'error',
     'quotes': ['warn', 'single'],
     'arrow-spacing': 'warn',
+  },
+
+  // Notes about React plugin custom settings: https://github.com/yannickcr/eslint-plugin-react#configuration
+  'settings': {
+    'react': {
+      'version': 'detect',
+    },
   },
 };
