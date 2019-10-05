@@ -6,7 +6,6 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  parser: 'babel-eslint',
   extends: ['eslint:recommended', 'plugin:react/recommended'],
   parserOptions: {
     ecmaVersion: '2019',
@@ -15,7 +14,7 @@ module.exports = {
     },
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'react-hooks'],
   rules: {
     'array-callback-return': 'warn',
     'eqeqeq': ['error', 'always', { 'null': 'ignore' }],
@@ -40,6 +39,8 @@ module.exports = {
     'no-var': 'error',
     'prefer-const': 'error',
     'react/prop-types': ['error', { skipUndeclared: true }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
 
     // style rules
     'semi': ['error', 'always'],

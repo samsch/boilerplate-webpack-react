@@ -3,15 +3,8 @@
     [
       "@babel/preset-env",
       {
-        "targets": {
-          "browsers": [
-            "last 2 Chrome versions",
-            "last 2 Firefox versions",
-            "last 2 iOS versions",
-            "ie 11"
-          ]
-        },
-        "useBuiltIns": "entry"
+        "useBuiltIns": "usage",
+        "corejs": 3
       }
     ],
     "@babel/preset-react"
